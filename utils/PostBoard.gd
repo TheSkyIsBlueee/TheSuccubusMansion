@@ -15,14 +15,17 @@ func post(message: Label):
 	var lastPiece = textPieces[-1];
 	
 	var holder = [];
+	var i:int = 1;
+	var length:int = textPieces.size();
 	for piece in textPieces:
 		var spacePieces = piece.split(" ", true);
 		for sPiece in spacePieces:
 			sPiece += " ";
 			holder.append(sPiece);
 
-		if piece != lastPiece:
+		if i != length:
 			holder.append("\n");
+		i += 1;
 	textPieces = holder;
 
 	for piece in textPieces:
