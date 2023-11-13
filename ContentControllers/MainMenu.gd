@@ -16,6 +16,16 @@ func run():
 	PostBoard.postLog(" | ");
 	PostBoard.postInteractableLog("Exit", onExitClick);
 
+func onInteractableLogClick(event, ilog):
+	if isGuiClickEvent(event):
+		match ilog:
+			"\nNew Game":
+				pass;
+			"Load":
+				pass;
+			"Exit":
+				pass;
+
 func onNewGameClick(event):
 	if isGuiClickEvent(event):
 		SaveManager.newSave();
