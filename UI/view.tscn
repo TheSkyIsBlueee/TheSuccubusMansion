@@ -34,11 +34,120 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CharacterDescriptor" type="Panel" parent="Row"]
+[node name="LeftColumn" type="VBoxContainer" parent="Row"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.33
+
+[node name="CharacterDescriptor" type="Panel" parent="Row/LeftColumn"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
 theme = ExtResource("1_djh07")
+
+[node name="SystemButtons" type="Panel" parent="Row/LeftColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.07
+theme = ExtResource("1_djh07")
+
+[node name="Save" type="Button" parent="Row/LeftColumn/SystemButtons"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.427
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -48.0
+offset_bottom = 0.00799942
+text = "Save"
+
+[node name="Load" type="Button" parent="Row/LeftColumn/SystemButtons"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = -7.0
+grow_horizontal = 0
+text = "Load"
+
+[node name="Quit" type="Button" parent="Row/LeftColumn/SystemButtons"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.024
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 10.976
+offset_top = 7.0
+offset_right = -48.0
+offset_bottom = -10.0
+grow_vertical = 0
+text = "Quit"
+
+[node name="SaveQuit" type="Button" parent="Row/LeftColumn/SystemButtons"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.427
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -48.0
+offset_bottom = 0.00799942
+text = "Save + Quit"
+
+[node name="QuitAnyways" type="Button" parent="Row/LeftColumn/SystemButtons"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = -7.0
+grow_horizontal = 0
+text = "Quit"
+
+[node name="CancelQuit" type="Button" parent="Row/LeftColumn/SystemButtons"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 7.0
+offset_right = -48.0
+offset_bottom = -10.0
+grow_vertical = 0
+text = "Cancel"
+
+[node name="ReloadScene" type="Button" parent="Row/LeftColumn/SystemButtons"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 7.0
+offset_right = -20.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Reload Scene"
 
 [node name="Background" type="Panel" parent="Row"]
 layout_mode = 2
@@ -229,3 +338,11 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_djh07")
+
+[connection signal="pressed" from="Row/LeftColumn/SystemButtons/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/SystemButtons/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/SystemButtons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/SystemButtons/SaveQuit" to="." method="_on_save_quit_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/SystemButtons/QuitAnyways" to="." method="_on_quit_anyways_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/SystemButtons/CancelQuit" to="." method="_on_cancel_quit_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/SystemButtons/ReloadScene" to="." method="_on_reload_scene_pressed"]

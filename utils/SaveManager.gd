@@ -27,16 +27,21 @@ static func newSave():
 		slotNumber = int(saveSlots[-1].split("_")[2]);
 	SaveState.saveFileName = "save_" + _getNewSaveTime() +  "_" + str(slotNumber) + _SAVES_FILE_EXT;
 	SaveState.saveData = load("res://templates/save_template.json").data;
-	save();
+	var file: FileAccess = FileAccess.open(_SAVES_PATH + "/" + SaveState.saveFileName, FileAccess.WRITE);
+	file.store_line(JSON.stringify(SaveState.saveData));
+	file.close();
 	_loadData();
 
 static func save():
+	var oldFileName = SaveState.saveFileName;
 	var nameParts = SaveState.saveFileName.split("_");
 	nameParts[1] = _getNewSaveTime()
 	SaveState.saveFileName = "_".join(nameParts);
 	var file: FileAccess = FileAccess.open(_SAVES_PATH + "/" + SaveState.saveFileName, FileAccess.WRITE);
 	file.store_line(JSON.stringify(SaveState.saveData));
 	file.close();
+	
+	DirAccess.open(_SAVES_PATH).remove(oldFileName);
 
 static func getSaveSlots() -> PackedStringArray:
 	if !DirAccess.open(_SAVES_PREFIX).dir_exists(_SAVES_DIR):
@@ -47,6 +52,7 @@ static func getSaveSlots() -> PackedStringArray:
 static func loadSave(saveslot: String):
 	SaveState.saveData = JSON.parse_string(FileAccess.get_file_as_string(_SAVES_PATH + "/" + saveslot));
 	SaveState.saveFileName = saveslot;
+	SaveState.isSaveLoaded = true;
 	_loadData();
 
 static func _loadData():
