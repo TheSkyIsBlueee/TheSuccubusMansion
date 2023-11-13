@@ -13,7 +13,7 @@ func run():
 	PostBoard.postLog("\nBirds chirping, wind blowing, her soft humming, the forest was a peaceful lively place. Each step she took was filled with delight.");
 	PostBoard.postLog("\nThe woman stops and gazes off into the forest, between the many trees was a ");
 	PostBoard.postInteractableLog("glimmering light.", _onGlimmeringLight_gui_input);
-	PostBoard.postLog("\n \n \nTUTORIAL: Throughout this game there will be hidden points of interest in the text. Some of these will reveal optional content, others will be required to progress through the game. Try clicking on \"glimmering light\" in the sentence above!\n\n\n");
+	PostBoard.postLog("\n\n\nTUTORIAL: Throughout this game there will be hidden points of interest in the text. Some of these will reveal optional content, others will be required to progress through the game. Try clicking on \"glimmering light\" in the sentence above!\n\n\n");
 
 func _onBountifulBosom_gui_input(event):
 	if isGuiClickEvent(event):
