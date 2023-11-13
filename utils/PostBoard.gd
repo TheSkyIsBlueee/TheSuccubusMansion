@@ -11,22 +11,15 @@ func setPostBoard(postBoard: Node):
 	_postBoard = postBoard;
 
 func post(message: Label):
-	var textPieces = message.text.split("\n", true);
+	var textPieces = message.text.replace("\n", "<newline>\n<newline>").split("<newline>", true);
 	
 	var holder = [];
-	var i:int = 1;
-	var length:int = textPieces.size();
 	for piece in textPieces:
-		var spacePieces = piece.split(" ", true);
+		var spacePieces = piece.replace(" ", " <space>").split("<space>", true);
 		for sPiece in spacePieces:
-			sPiece += " ";
 			holder.append(sPiece);
-
-		if i != length:
-			holder.append("\n");
-		i += 1;
 	textPieces = holder;
-
+	
 	for piece in textPieces:
 		var newChild = message.duplicate(5);
 		newChild.text = piece;
