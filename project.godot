@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalGetTree="*res://utils/GlobalGetTree.gd"
+SaveState="*res://utils/SaveState.gd"
 PostBoard="*res://utils/PostBoard.gd"
 ActiveContentController="*res://utils/ActiveContentController.gd"
 

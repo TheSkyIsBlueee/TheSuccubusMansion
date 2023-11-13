@@ -1,4 +1,4 @@
 extends Node
 
-func quit():
-	get_tree().quit();
+func quit(status: Error = 0):
+	get_tree().quit(status);
