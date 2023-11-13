@@ -12,7 +12,6 @@ func setPostBoard(postBoard: Node):
 
 func post(message: Label):
 	var textPieces = message.text.split("\n", true);
-	var lastPiece = textPieces[-1];
 	
 	var holder = [];
 	var i:int = 1;
