@@ -34,4 +34,4 @@ func _onStayHere_gui_input(event):
 
 func _onGoToGlimmeringLight_gui_input(event):
 	if isGuiClickEvent(event):
-		ActiveContentController.setController(load("res://ContentControllers/ManorEntrance.gd").new());
+		ActiveContentController.setController(load("res://ContentControllers/MansionEntrance.gd").new());

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx37rd1ywcjdm"]
+[gd_scene load_steps=5 format=3 uid="uid://bx37rd1ywcjdm"]
 
 [ext_resource type="Theme" uid="uid://b4ql78i27k180" path="res://UI/ViewComponent.tres" id="1_djh07"]
 [ext_resource type="Script" path="res://Scripts/MainController.gd" id="1_f314v"]
+[ext_resource type="Theme" uid="uid://hxafo2q4fjkc" path="res://UI/StandardFont.tres" id="3_7uxea"]
 [ext_resource type="PackedScene" uid="uid://c6ji613hc3sg3" path="res://UI/FlowContainer.tscn" id="3_x7raq"]
 
 [node name="View" type="Control"]
@@ -45,6 +46,82 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.7
 theme = ExtResource("1_djh07")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Row/LeftColumn/CharacterDescriptor"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActiveDescriptor" type="Label" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_7uxea")
+text = "She is using her face"
+horizontal_alignment = 1
+
+[node name="Hair" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Hair"
+
+[node name="Face" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Face"
+
+[node name="Lips" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Lips"
+
+[node name="Arms" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Arms"
+
+[node name="Fingers" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Fingers"
+
+[node name="Breasts" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Breasts"
+
+[node name="Nipples" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Nipples"
+
+[node name="Stomach" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Stomach"
+
+[node name="Back" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Groin" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Groin"
+
+[node name="Vagina" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Vagina"
+
+[node name="Butt" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Butt"
+
+[node name="Thighs" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Thighs"
+
+[node name="Legs" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Legs"
+
+[node name="Feet" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
+layout_mode = 2
+text = "Feet"
 
 [node name="SystemButtons" type="Panel" parent="Row/LeftColumn"]
 layout_mode = 2
@@ -339,6 +416,21 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_djh07")
 
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Hair" to="." method="_on_hair_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Face" to="." method="_on_face_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Lips" to="." method="_on_lips_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Arms" to="." method="_on_arms_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Fingers" to="." method="_on_fingers_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Breasts" to="." method="_on_breasts_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Nipples" to="." method="_on_nipples_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Stomach" to="." method="_on_stomach_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Groin" to="." method="_on_groin_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Vagina" to="." method="_on_vagina_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Butt" to="." method="_on_butt_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Thighs" to="." method="_on_thighs_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Legs" to="." method="_on_legs_pressed"]
+[connection signal="pressed" from="Row/LeftColumn/CharacterDescriptor/VBoxContainer/Feet" to="." method="_on_feet_pressed"]
 [connection signal="pressed" from="Row/LeftColumn/SystemButtons/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Row/LeftColumn/SystemButtons/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Row/LeftColumn/SystemButtons/Quit" to="." method="_on_quit_pressed"]

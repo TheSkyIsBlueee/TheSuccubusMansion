@@ -1,5 +1,8 @@
 extends RefCounted
 
+const Character = preload("res://models/Character.gd");
+const SaveData = preload("res://models/SaveData.gd");
+
 const _SAVES_PREFIX: String = "user://";
 const _SAVES_DIR: String = "saves";
 const _SAVES_PATH: String = _SAVES_PREFIX + _SAVES_DIR;
@@ -25,20 +28,26 @@ static func newSave():
 	var slotNumber = 1;
 	if saveSlots.size() != 0:
 		slotNumber = int(saveSlots[-1].split("_")[2]);
-	SaveState.saveFileName = "save_" + _getNewSaveTime() +  "_" + str(slotNumber) + _SAVES_FILE_EXT;
-	SaveState.saveData = load("res://templates/save_template.json").data;
-	var file: FileAccess = FileAccess.open(_SAVES_PATH + "/" + SaveState.saveFileName, FileAccess.WRITE);
-	file.store_line(JSON.stringify(SaveState.saveData));
+	
+	var dict = load("res://templates/save_template.json").data;
+	var data = SaveData.new(
+		dict,
+		"save_" + _getNewSaveTime() +  "_" + str(slotNumber) + _SAVES_FILE_EXT
+	);
+	data.setCharacter(Character.getInitialCharacterDescription());
+	State.saveData = dict;
+	var file: FileAccess = FileAccess.open(_SAVES_PATH + "/" + State.saveData.getFileName(), FileAccess.WRITE);
+	file.store_line(JSON.stringify(State.saveData.getData()));
 	file.close();
 	_loadData();
 
 static func save():
-	var oldFileName = SaveState.saveFileName;
-	var nameParts = SaveState.saveFileName.split("_");
+	var oldFileName = State.saveData.getFileName();
+	var nameParts = State.saveData.getFileName().split("_");
 	nameParts[1] = _getNewSaveTime()
-	SaveState.saveFileName = "_".join(nameParts);
-	var file: FileAccess = FileAccess.open(_SAVES_PATH + "/" + SaveState.saveFileName, FileAccess.WRITE);
-	file.store_line(JSON.stringify(SaveState.saveData));
+	State.saveData.setFileName("_".join(nameParts));
+	var file: FileAccess = FileAccess.open(_SAVES_PATH + "/" + State.saveData.getFileName(), FileAccess.WRITE);
+	file.store_line(JSON.stringify(State.saveData.getData()));
 	file.close();
 	
 	DirAccess.open(_SAVES_PATH).remove(oldFileName);
@@ -50,14 +59,15 @@ static func getSaveSlots() -> PackedStringArray:
 	return saves.get_files();
 
 static func loadSave(saveslot: String):
-	SaveState.saveData = JSON.parse_string(FileAccess.get_file_as_string(_SAVES_PATH + "/" + saveslot));
-	SaveState.saveFileName = saveslot;
-	SaveState.isSaveLoaded = true;
+	State.saveData = SaveData.new(
+		JSON.parse_string(FileAccess.get_file_as_string(_SAVES_PATH + "/" + saveslot)),
+		saveslot
+	);
+	State.isSaveLoaded = true;
 	_loadData();
 
 static func _loadData():
-	ActiveContentController.setController(load(SaveState.saveData.activeScene).new());
+	ActiveContentController.setController(load(State.saveData.getActiveScene()).new(), false);
 
 static func deleteSave(saveslot: String):
 	DirAccess.open(_SAVES_PATH).remove(saveslot);
-

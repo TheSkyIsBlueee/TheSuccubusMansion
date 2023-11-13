@@ -5,10 +5,11 @@ const ContentController = preload("res://ContentControllers/ContentController.gd
 var _activeController: ContentController;
 var _fragmentControllers: Array;
 
-func setController(controller: ContentController):
+func setController(controller: ContentController, updateActiveScene: bool = true):
 	PostBoard.clear();
 	_activeController = controller;
-	SaveState.saveData.activeScene = controller.get_script().get_path();
+	if updateActiveScene:
+		State.saveData.setActiveScene(controller.get_script().get_path());
 	_activeController.run();
 
 func reloadScene():

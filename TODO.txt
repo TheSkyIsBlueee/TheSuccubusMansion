@@ -1,0 +1,4 @@
+Was working on CharacterDescriptor. Fill in each body part's onclicks.
+Also was thinking of somehow providing global access to CharacterDescriptor's functions, so that any reference to a body part can easily re-use CharacterDescriptor's code.
+
+MansionEntrance is also incomplete.
