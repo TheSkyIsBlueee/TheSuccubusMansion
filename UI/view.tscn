@@ -1,0 +1,231 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx37rd1ywcjdm"]
+
+[ext_resource type="Theme" uid="uid://b4ql78i27k180" path="res://UI/ViewComponent.tres" id="1_djh07"]
+[ext_resource type="Script" path="res://Scripts/MainController.gd" id="1_f314v"]
+[ext_resource type="PackedScene" uid="uid://c6ji613hc3sg3" path="res://UI/FlowContainer.tscn" id="3_x7raq"]
+
+[node name="View" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f314v")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_djh07")
+
+[node name="Row" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterDescriptor" type="Panel" parent="Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.33
+theme = ExtResource("1_djh07")
+
+[node name="Background" type="Panel" parent="Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_djh07")
+
+[node name="SceneLog" type="ScrollContainer" parent="Row/Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="LogListContainer" type="MarginContainer" parent="Row/Background/SceneLog"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="LogList" parent="Row/Background/SceneLog/LogListContainer" instance=ExtResource("3_x7raq")]
+layout_mode = 2
+
+[node name="RightColumn" type="VBoxContainer" parent="Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.33
+
+[node name="Background" type="Panel" parent="Row/RightColumn"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
+theme = ExtResource("1_djh07")
+
+[node name="MiniMapPlaceholder" type="ScrollContainer" parent="Row/RightColumn/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+theme = ExtResource("1_djh07")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="Row/RightColumn/Background/MiniMapPlaceholder"]
+layout_mode = 2
+columns = 3
+
+[node name="Panel" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel4" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel5" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel6" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel7" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel8" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel9" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel10" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel11" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel12" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel13" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel14" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel15" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel16" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel17" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel18" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel19" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel20" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel21" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel22" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel23" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel24" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel25" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel26" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel27" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel28" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel29" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel30" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel31" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="Panel32" type="Panel" parent="Row/RightColumn/Background/MiniMapPlaceholder/GridContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+
+[node name="InventoryDescriptor" type="Panel" parent="Row/RightColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_djh07")
