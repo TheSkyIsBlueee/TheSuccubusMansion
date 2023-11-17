@@ -48,16 +48,18 @@ enum CumExpansion {
 	HEAVILY_PREGNANT
 };
 const GroinPubicHairKey = "pubichair";
+signal OnDescriptionUpdate;
 
-var _data: Dictionary;
+var data: Dictionary : set = _setData, get = _getData;
 func _init():
-	_data = getInitialDescription();
+	data = getInitialDescription();
 
-func getData() -> Dictionary:
-	return _data;
+func _getData() -> Dictionary:
+	return data;
 
-func setData(data: Dictionary):
-	_data = data;
+func _setData(_data: Dictionary):
+	data = _data;
+	OnDescriptionUpdate.emit(_data);
 
 func getHairLength() -> String:
 	return _getAttribute(Descriptor.HAIR, HairLengthKey);
@@ -161,10 +163,10 @@ func setCumExpansion(cumexp: CumExpansion):
 	_setAttribute(Descriptor.VAGINA, StomachCumExpansion, cumexp);
 
 func increaseCumExpansion():
-	var exp = getCumExpansion();
+	var cExp = getCumExpansion();
 	var newExp: CumExpansion = CumExpansion.SMOOTH;
 	
-	match exp:
+	match cExp:
 		CumExpansion.LARGE: newExp = CumExpansion.HEAVILY_PREGNANT;
 		CumExpansion.MEDIUM: newExp = CumExpansion.LARGE;
 		CumExpansion.SMALL: newExp = CumExpansion.MEDIUM;
@@ -175,10 +177,10 @@ func increaseCumExpansion():
 	setCumExpansion(newExp);
 
 func reduceCumExpansion():
-	var exp = getCumExpansion();
+	var cExp = getCumExpansion();
 	var newExp: CumExpansion = CumExpansion.SMOOTH;
 	
-	match exp:
+	match cExp:
 		CumExpansion.HEAVILY_PREGNANT: newExp = CumExpansion.LARGE;
 		CumExpansion.LARGE: newExp = CumExpansion.MEDIUM;
 		CumExpansion.MEDIUM: newExp = CumExpansion.SMALL;
@@ -284,12 +286,12 @@ static func descriptorToText(descriptor: Descriptor) -> String:
 			return "";
 
 
-func _setAttribute(descriptor: Descriptor, attribute: String, data: Variant):
-	_data[_descriptorToKey(descriptor)][attribute] = data;
-	State.saveData.setCharacter(_data);
+func _setAttribute(descriptor: Descriptor, attribute: String, value: Variant):
+	data[_descriptorToKey(descriptor)][attribute] = value;
+	OnDescriptionUpdate.emit(data);
 
 func _getAttribute(descriptor: Descriptor, attribute: String) -> Variant:
-	return _data[_descriptorToKey(descriptor)][attribute];
+	return data[_descriptorToKey(descriptor)][attribute];
 
 static func _descriptorToKey(descriptor: Descriptor) -> String:
 	match descriptor:
@@ -347,7 +349,7 @@ static func _cleanlinessToText(value: Cleanliness) -> String:
 	
 	if wet.size() != 0:
 		if text != "":
-			text + "; and ";
+			text += "; and ";
 		
 		text += "wet with " + (", ".join(wet));
 	

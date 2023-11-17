@@ -2,7 +2,7 @@
 extends Container
 
 func _notification(what):
-	if what == NOTIFICATION_SORT_CHILDREN:		
+	if what == NOTIFICATION_SORT_CHILDREN:
 		var totalWidth: int = self.size.x;
 		var writtenWidth: int = 0;
 		var currentY: int = 0;

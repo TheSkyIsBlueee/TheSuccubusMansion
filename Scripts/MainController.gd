@@ -17,12 +17,10 @@ func _ready():
 func _onFlagUpdate(key: String, enabled: bool):
 	if key == SaveDataFlags.UnlockedCharacterDescription && enabled:
 		$Row/LeftColumn/CharacterDescriptor/VBoxContainer.show();
-		_updateActiveDescriptorLabel();
 
 func _onSaveLoaded():
 	if State.saveData.getFlag(SaveDataFlags.UnlockedCharacterDescription):
 		$Row/LeftColumn/CharacterDescriptor/VBoxContainer.show();
-		_updateActiveDescriptorLabel();
 
 func _on_save_pressed():
 	if State.isSaveLoaded:
@@ -61,6 +59,3 @@ func _on_save_quit_pressed():
 
 func _on_reload_scene_pressed():
 	ActiveContentController.reloadScene();
-
-func _updateActiveDescriptorLabel():
-	$Row/LeftColumn/CharacterDescriptor/VBoxContainer/ActiveDescriptor.text = "She is using her " + Character.descriptorToText(State.getActiveDescriptor());

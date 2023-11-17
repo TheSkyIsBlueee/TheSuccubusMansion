@@ -34,20 +34,19 @@ static func newSave():
 		dict,
 		"save_" + _getNewSaveTime() +  "_" + str(slotNumber) + _SAVES_FILE_EXT
 	);
-	data.setCharacter(Character.getInitialCharacterDescription());
-	State.saveData = dict;
-	var file: FileAccess = FileAccess.open(_SAVES_PATH + "/" + State.saveData.getFileName(), FileAccess.WRITE);
-	file.store_line(JSON.stringify(State.saveData.getData()));
+	State.saveData = data;
+	var file: FileAccess = FileAccess.open(_SAVES_PATH + "/" + State.saveData.fileName, FileAccess.WRITE);
+	file.store_line(JSON.stringify(State.saveData.data));
 	file.close();
 	_loadData();
 
 static func save():
-	var oldFileName = State.saveData.getFileName();
-	var nameParts = State.saveData.getFileName().split("_");
+	var oldFileName = State.saveData.fileName;
+	var nameParts = State.saveData.fileName.split("_");
 	nameParts[1] = _getNewSaveTime()
-	State.saveData.setFileName("_".join(nameParts));
-	var file: FileAccess = FileAccess.open(_SAVES_PATH + "/" + State.saveData.getFileName(), FileAccess.WRITE);
-	file.store_line(JSON.stringify(State.saveData.getData()));
+	State.saveData.fileName = "_".join(nameParts);
+	var file: FileAccess = FileAccess.open(_SAVES_PATH + "/" + State.saveData.fileName, FileAccess.WRITE);
+	file.store_line(JSON.stringify(State.saveData.data));
 	file.close();
 	
 	DirAccess.open(_SAVES_PATH).remove(oldFileName);

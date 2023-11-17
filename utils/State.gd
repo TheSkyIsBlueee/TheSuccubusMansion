@@ -4,25 +4,33 @@ const SaveData = preload("res://models/SaveData.gd");
 const Character = preload("res://models/Character.gd");
 
 signal OnSaveLoaded;
-var isSaveLoaded: bool = false : set = _setIsSaveLoaded, get = _getIsSaveLoaded;
+signal OnFlagUpdate;
+var isSaveLoaded: bool = false : get = _getIsSaveLoaded;
+var saveData: SaveData : set = _setSaveData, get = _getSaveData;
+var activeDescriptor: Character.Descriptor : set = _setActiveDescriptor, get = _getActiveDescriptor;
 
-func _setIsSaveLoaded(value: bool):
-	isSaveLoaded = value;
-	if isSaveLoaded:
-		OnSaveLoaded.emit();
+func _setSaveData(data: SaveData):
+	if saveData:
+		saveData.OnFlagUpdate.disconnect(_onFlagUpdate);
+	
+	saveData = data;
+	saveData.OnFlagUpdate.connect(_onFlagUpdate);
+	OnSaveLoaded.emit();
+
+func _onFlagUpdate(key: String, enabled: bool):
+	OnFlagUpdate.emit(key, enabled);
+
+func _getSaveData() -> SaveData:
+	return saveData;
 
 func _getIsSaveLoaded() -> bool:
 	return isSaveLoaded;
 
-var saveData: SaveData;
+func _getActiveDescriptor() -> Character.Descriptor:
+	return activeDescriptor;
 
-var _activeDescriptor: Character.Descriptor;
-
-func getActiveDescriptor() -> Character.Descriptor:
-	return _activeDescriptor;
-
-func setActiveDescriptor(descriptor: Character.Descriptor):
-	_activeDescriptor = descriptor;
+func _setActiveDescriptor(descriptor: Character.Descriptor):
+	activeDescriptor = descriptor;
 
 func _ready():
-	_activeDescriptor = Character.Descriptor.FACE;
+	activeDescriptor = Character.Descriptor.FACE;

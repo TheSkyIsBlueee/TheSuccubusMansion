@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx37rd1ywcjdm"]
+[gd_scene load_steps=4 format=3 uid="uid://bx37rd1ywcjdm"]
 
 [ext_resource type="Theme" uid="uid://b4ql78i27k180" path="res://UI/ViewComponent.tres" id="1_djh07"]
 [ext_resource type="Script" path="res://Scripts/MainController.gd" id="1_f314v"]
-[ext_resource type="Theme" uid="uid://hxafo2q4fjkc" path="res://UI/StandardFont.tres" id="3_7uxea"]
 [ext_resource type="PackedScene" uid="uid://c6ji613hc3sg3" path="res://UI/FlowContainer.tscn" id="3_x7raq"]
 
 [node name="View" type="Control"]
@@ -56,12 +55,6 @@ anchor_right = 0.9
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ActiveDescriptor" type="Label" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_7uxea")
-text = "She is using her face"
-horizontal_alignment = 1
 
 [node name="Hair" type="Button" parent="Row/LeftColumn/CharacterDescriptor/VBoxContainer"]
 layout_mode = 2

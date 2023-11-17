@@ -2,7 +2,11 @@
 	"activeScene": "res://ContentControllers/OpeningScene.gd",
 	"flags": {
 		"unlockedCharacterDescription": false,
-		"openedMansionEntranceGate": false
+		"openedMansionEntranceGate": false,
+		"investigatedMansionEntrance": false,
+		"kissedThePlant": false,
+		"grindedThePlant": false,
+		"inspectedStoneBench": false
 	},
 	"characterDescription": null
 }

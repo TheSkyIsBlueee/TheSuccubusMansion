@@ -50,3 +50,9 @@ func postInteractableLog(message: String, onGuiInput: Callable):
 func clear():
 	for child in _postBoard.get_children():
 		child.queue_free();
+
+func postHowWouldThatWork():
+	PostBoard.postLog("\n\nThe woman chuckles to herself. \"What a silly thought, how would that even work?\"");
+
+func postWhyWouldIDoThat():
+	PostBoard.postLog("\n\nThe woman chuckles to herself. \"What a silly thought, why would I do that?\"");
